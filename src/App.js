@@ -29,19 +29,18 @@ export default class App extends Component<Props, State> {
     this.updateRepositoryList('samsao');
   }
 
-  updateRepositoryList(organization: string) {
-    getRepositoriesOf(organization)
-      .then((repositories) => {
-        this.setState({
-          error: null,
-          repositories,
-        });
-      })
-      .catch((error) => {
-        this.setState({
-          error,
-        });
+  async updateRepositoryList(organization: string) {
+    try {
+      const repositories = await getRepositoriesOf(organization);
+      this.setState({
+        error: null,
+        repositories,
       });
+    } catch (error) {
+      this.setState({
+        error,
+      });
+    }
   }
 
   onSearchPressed = (search: string) => {
