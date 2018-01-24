@@ -1,0 +1,11 @@
+{
+  "javascript.validate.enable": false,
+  "flow.enabled": true,
+  "flow.runOnEdit": true,
+  "flow.runOnAllFiles": true,
+  "flow.showStatus": true,
+  "flow.useNPMPackagedFlow": true,
+  "prettier.eslintIntegration": true,
+  "prettier.parser": "flow",
+  "eslint.autoFixOnSave": true
+}

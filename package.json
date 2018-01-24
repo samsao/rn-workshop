@@ -1,0 +1,56 @@
+{
+  "name": "GitRepo",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest",
+    "ios": "react-native run-ios",
+    "android": "react-native run-android",
+    "lint": "yarn run -s lint:flow && yarn run -s lint:eslint",
+    "lint:eslint": "node node_modules/eslint/bin/eslint.js --ignore-path '.gitignore' --ignore-pattern flow-typed .",
+    "lint:flow": "node node_modules/flow-bin/cli.js"
+  },
+  "dependencies": {
+    "react": "16.2.0",
+    "react-native": "0.52.0",
+    "apisauce": "^0.14.0",
+    "lodash": "^4.17.2"
+  },
+  "devDependencies": {
+    "babel-jest": "22.1.0",
+    "babel-preset-react-native": "4.0.0",
+    "jest": "22.1.4",
+    "react-test-renderer": "16.2.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.1",
+    "babel-plugin-module-resolver": "^3.0.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "eslint": "^4.15.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-samsao-base": "^2.0.1",
+    "eslint-config-samsao-mobile": "^2.0.1",
+    "eslint-config-samsao-node": "^2.0.1",
+    "eslint-import-resolver-babel-module": "^4.0.0",
+    "eslint-plugin-filenames": "^1.2.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.5.1",
+    "eslint-plugin-react-native": "^3.2.1",
+    "flow-bin": "^0.63.1",
+    "husky": "^0.14.3",
+    "mockery": "^2.0.0",
+    "snazzy": "^7.0.0",
+    "standard": "10.0.3",
+    "yarn-run-all": "^3.1.1"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}

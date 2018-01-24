@@ -1,0 +1,16 @@
+{
+  "presets": ["react-native"],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./src"],
+        "alias": {
+          "@mobile": "./src"
+        },
+        "cwd": "babelrc"
+      }
+    ]
+  ],
+  "sourceMaps": true
+}
