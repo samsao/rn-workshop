@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 
 import { ListView } from '@mobile/Components/List';
+import { SearchField } from '@mobile/Components/SearchField/SearchField';
 import { type GitRepository } from '@mobile/Models/GitRepository';
-
 import { getRepositoriesOf } from '@mobile/Client/Github';
-
 import { Colors } from '@mobile/Resources/colors';
 
 type State = {
@@ -27,7 +26,11 @@ export default class App extends Component<Props, State> {
   }
 
   componentWillMount() {
-    getRepositoriesOf('samsao')
+    this.updateRepositoryList('samsao');
+  }
+
+  updateRepositoryList(organization: string) {
+    getRepositoriesOf(organization)
       .then((repositories) => {
         this.setState({
           error: null,
@@ -40,6 +43,10 @@ export default class App extends Component<Props, State> {
         });
       });
   }
+
+  onSearchPressed = (search: string) => {
+    this.updateRepositoryList(search);
+  };
 
   renderError() {
     if (!this.state.error) return null;
@@ -54,8 +61,11 @@ export default class App extends Component<Props, State> {
   render() {
     return (
       <View style={styles.container}>
-        {this.renderRepositories()}
-        {this.renderError()}
+        <View style={styles.content}>
+          {this.renderError()}
+          {this.renderRepositories()}
+        </View>
+        <SearchField onSearchPress={this.onSearchPressed} initialText='samsao' />
       </View>
     );
   }
@@ -64,6 +74,11 @@ export default class App extends Component<Props, State> {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.background,
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+  },
+  content: {
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
